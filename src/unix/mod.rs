@@ -306,7 +306,7 @@ cfg_if! {
     } else if #[cfg(feature = "use_std")] {
         // cargo build, don't pull in anything extra as the libstd dep
         // already pulls in all libs.
-    } else if #[cfg(target_env = "musl")] {
+    } else if #[cfg(any(target_env = "musl", target_env = "nianjia"))] {
         #[cfg_attr(feature = "rustc-dep-of-std",
                    link(name = "c", kind = "static",
                         cfg(target_feature = "crt-static")))]
