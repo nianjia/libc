@@ -115,6 +115,9 @@ cfg_if! {
     } else if #[cfg(target_env = "wasi")] {
         mod wasi;
         pub use wasi::*;
+    } else if #[cfg(target_env = "nianjia")] {
+        mod nianjia;
+        pub use nianjia::*;
     } else {
         // non-supported targets: empty...
     }
