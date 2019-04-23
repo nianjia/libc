@@ -103,7 +103,7 @@ cfg_if! {
     } else if #[cfg(target_os = "switch")] {
         mod switch;
         pub use switch::*;
-    } else if #[cfg(unix))] {
+    } else if #[cfg(unix)] {
         mod unix;
         pub use unix::*;
     } else if #[cfg(target_os = "hermit")] {
