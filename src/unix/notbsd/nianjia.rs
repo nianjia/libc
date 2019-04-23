@@ -1,1 +1,34 @@
 pub type c_char = i8;
+pub type wchar_t = i32;
+pub type useconds_t = u32;
+pub type dev_t = u32;
+pub type socklen_t = u32;
+pub type pthread_t = c_ulong;
+pub type mode_t = u32;
+pub type ino64_t = u32;
+pub type off64_t = i32;
+pub type blkcnt64_t = i32;
+pub type rlim64_t = u64;
+pub type shmatt_t = ::c_ulong;
+pub type mqd_t = ::c_int;
+pub type msgqnum_t = ::c_ulong;
+pub type msglen_t = ::c_ulong;
+pub type nfds_t = ::c_ulong;
+pub type nl_item = ::c_int;
+pub type idtype_t = ::c_uint;
+pub type loff_t = i32;
+
+pub type clock_t = c_long;
+pub type time_t = c_long;
+pub type suseconds_t = c_long;
+pub type ino_t = u32;
+pub type off_t = i32;
+pub type blkcnt_t = i32;
+
+pub type blksize_t = c_long;
+pub type fsblkcnt_t = u32;
+pub type fsfilcnt_t = u32;
+pub type rlim_t = ::c_ulonglong;
+pub type c_long = i32;
+pub type c_ulong = u32;
+pub type nlink_t = u32;
