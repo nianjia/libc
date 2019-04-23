@@ -28,6 +28,6 @@ pub type time_t = c_longlong;
 pub type c_double = f64;
 pub type c_float = f32;
 
-pub fn strlen(cs: *const c_char) -> size_t {
-	0
+extern {
+	pub fn strlen(cs: *const c_char) -> size_t;
 }
