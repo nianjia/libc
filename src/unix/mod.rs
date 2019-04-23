@@ -1139,7 +1139,8 @@ cfg_if! {
         pub use self::newlib::*;
     } else if #[cfg(any(target_os = "linux",
                         target_os = "android",
-                        target_os = "emscripten"))] {
+                        target_os = "emscripten",
+                        target_env = "nianjia"))] {
         mod notbsd;
         pub use self::notbsd::*;
     } else if #[cfg(any(target_os = "macos",

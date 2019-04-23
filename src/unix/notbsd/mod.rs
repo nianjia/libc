@@ -1426,7 +1426,7 @@ cfg_if! {
     } else if #[cfg(target_env = "nianjia")] {
         mod nianjia;
         pub use self::nianjia::*;
-    }else {
+    } else {
         // Unknown target_os
     }
 }
