@@ -1423,7 +1423,10 @@ cfg_if! {
     } else if #[cfg(target_os = "android")] {
         mod android;
         pub use self::android::*;
-    } else {
+    } else if #[cfg(target_env = "nianjia")] {
+        mod nianjia;
+        pub use self::nianjia::*;
+    }else {
         // Unknown target_os
     }
 }
