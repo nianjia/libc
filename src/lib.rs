@@ -103,7 +103,7 @@ cfg_if! {
     } else if #[cfg(target_os = "switch")] {
         mod switch;
         pub use switch::*;
-    } else if #[cfg(any(unix, target_os = "nianjia"))] {
+    } else if #[cfg(unix))] {
         mod unix;
         pub use unix::*;
     } else if #[cfg(target_os = "hermit")] {
@@ -115,6 +115,9 @@ cfg_if! {
     } else if #[cfg(target_env = "wasi")] {
         mod wasi;
         pub use wasi::*;
+    } else if #[cfg(target_env = "nianjia")] {
+        mod nianjia;
+        pub use nianjia::*;
     } else {
         // non-supported targets: empty...
     }
