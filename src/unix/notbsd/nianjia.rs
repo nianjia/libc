@@ -1656,3 +1656,112 @@ pub const ARPD_UPDATE: ::c_ushort = 0x01;
 pub const ARPD_LOOKUP: ::c_ushort = 0x02;
 pub const ARPD_FLUSH: ::c_ushort = 0x03;
 pub const ATF_MAGIC: ::c_int = 0x80;
+
+
+extern {
+    pub fn abs(i: ::c_int) -> ::c_int;
+    pub fn atof(s: *const ::c_char) -> ::c_double;
+    pub fn labs(i: ::c_long) -> ::c_long;
+    pub fn rand() -> ::c_int;
+    pub fn srand(seed: ::c_uint);
+
+    pub fn setpwent();
+    pub fn endpwent();
+    pub fn getpwent() -> *mut passwd;
+
+    pub fn shm_open(name: *const c_char, oflag: ::c_int,
+                    mode: mode_t) -> ::c_int;
+
+    pub fn mprotect(addr: *mut ::c_void, len: ::size_t, prot: ::c_int)
+                    -> ::c_int;
+    pub fn __errno_location() -> *mut ::c_int;
+
+    pub fn fopen64(filename: *const c_char,
+                   mode: *const c_char) -> *mut ::FILE;
+    pub fn freopen64(filename: *const c_char, mode: *const c_char,
+                     file: *mut ::FILE) -> *mut ::FILE;
+    pub fn tmpfile64() -> *mut ::FILE;
+    pub fn fgetpos64(stream: *mut ::FILE, ptr: *mut fpos64_t) -> ::c_int;
+    pub fn fsetpos64(stream: *mut ::FILE, ptr: *const fpos64_t) -> ::c_int;
+    pub fn fseeko64(stream: *mut ::FILE,
+                    offset: ::off64_t,
+                    whence: ::c_int) -> ::c_int;
+    pub fn ftello64(stream: *mut ::FILE) -> ::off64_t;
+    pub fn posix_fallocate(fd: ::c_int, offset: ::off_t,
+                           len: ::off_t) -> ::c_int;
+    pub fn pwritev(fd: ::c_int,
+                   iov: *const ::iovec,
+                   iovcnt: ::c_int,
+                   offset: ::off_t) -> ::ssize_t;
+    pub fn preadv(fd: ::c_int,
+                  iov: *const ::iovec,
+                  iovcnt: ::c_int,
+                  offset: ::off_t) -> ::ssize_t;
+    pub fn dup3(oldfd: ::c_int, newfd: ::c_int, flags: ::c_int) -> ::c_int;
+    pub fn mkostemp(template: *mut ::c_char, flags: ::c_int) -> ::c_int;
+    pub fn mkostemps(template: *mut ::c_char,
+                     suffixlen: ::c_int,
+                     flags: ::c_int) -> ::c_int;
+    pub fn nl_langinfo_l(item: ::nl_item, locale: ::locale_t) -> *mut ::c_char;
+    pub fn getnameinfo(sa: *const ::sockaddr,
+                       salen: ::socklen_t,
+                       host: *mut ::c_char,
+                       hostlen: ::socklen_t,
+                       serv: *mut ::c_char,
+                       sevlen: ::socklen_t,
+                       flags: ::c_int) -> ::c_int;
+    pub fn getloadavg(loadavg: *mut ::c_double, nelem: ::c_int) -> ::c_int;
+
+    // Not available now on Android
+    pub fn mkfifoat(dirfd: ::c_int, pathname: *const ::c_char,
+                    mode: ::mode_t) -> ::c_int;
+    pub fn if_nameindex() -> *mut if_nameindex;
+    pub fn if_freenameindex(ptr: *mut if_nameindex);
+
+    pub fn mremap(addr: *mut ::c_void,
+                  len: ::size_t,
+                  new_len: ::size_t,
+                  flags: ::c_int,
+                  ...) -> *mut ::c_void;
+
+    pub fn glob(pattern: *const c_char,
+                flags: ::c_int,
+                errfunc: ::Option<extern fn(epath: *const c_char,
+                                          errno: ::c_int) -> ::c_int>,
+                pglob: *mut ::glob_t) -> ::c_int;
+    pub fn globfree(pglob: *mut ::glob_t);
+
+    pub fn posix_madvise(addr: *mut ::c_void, len: ::size_t, advice: ::c_int)
+                         -> ::c_int;
+
+    pub fn shm_unlink(name: *const ::c_char) -> ::c_int;
+
+    pub fn seekdir(dirp: *mut ::DIR, loc: ::c_long);
+
+    pub fn telldir(dirp: *mut ::DIR) -> ::c_long;
+    pub fn madvise(addr: *mut ::c_void, len: ::size_t, advice: ::c_int)
+                  -> ::c_int;
+
+    pub fn msync(addr: *mut ::c_void, len: ::size_t, flags: ::c_int) -> ::c_int;
+
+    pub fn recvfrom(socket: ::c_int, buf: *mut ::c_void, len: ::size_t,
+                    flags: ::c_int, addr: *mut ::sockaddr,
+                    addrlen: *mut ::socklen_t) -> ::ssize_t;
+    pub fn mkstemps(template: *mut ::c_char, suffixlen: ::c_int) -> ::c_int;
+    pub fn nl_langinfo(item: ::nl_item) -> *mut ::c_char;
+
+    pub fn getdomainname(name: *mut ::c_char, len: ::size_t) -> ::c_int;
+    pub fn setdomainname(name: *const ::c_char, len: ::size_t) -> ::c_int;
+    pub fn sendmmsg(sockfd: ::c_int, msgvec: *mut ::mmsghdr, vlen: ::c_uint,
+                    flags: ::c_int) -> ::c_int;
+    pub fn recvmmsg(sockfd: ::c_int, msgvec: *mut ::mmsghdr, vlen: ::c_uint,
+                    flags: ::c_int, timeout: *mut ::timespec) -> ::c_int;
+    pub fn sync();
+    pub fn ioctl(fd: ::c_int, request: ::c_int, ...) -> ::c_int;
+    pub fn getpriority(which: ::c_int, who: ::id_t) -> ::c_int;
+    pub fn setpriority(which: ::c_int, who: ::id_t, prio: ::c_int) -> ::c_int;
+    pub fn pthread_create(native: *mut ::pthread_t,
+                          attr: *const ::pthread_attr_t,
+                          f: extern fn(*mut ::c_void) -> *mut ::c_void,
+                          value: *mut ::c_void) -> ::c_int;
+}
