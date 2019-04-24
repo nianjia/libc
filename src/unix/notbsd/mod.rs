@@ -51,7 +51,8 @@ s! {
         pub ai_addrlen: socklen_t,
 
         #[cfg(any(target_os = "linux",
-                  target_os = "emscripten"))]
+                  target_os = "emscripten",
+                  target_env = "nianjia"))]
         pub ai_addr: *mut ::sockaddr,
 
         pub ai_canonname: *mut c_char,
